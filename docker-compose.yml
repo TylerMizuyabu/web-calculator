@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  client:
+    container_name: calculator-client
+    image: calculator-client
+    build:
+      context: ./client
+    ports:
+      - 4200:80
+  server:
+    container_name: calculator-server
+    image: calculator-server
+    build:
+      context: ./server
+    ports:
+      - 3000:3000

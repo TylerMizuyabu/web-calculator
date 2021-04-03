@@ -1,0 +1,33 @@
+.container-div {
+  max-width: 100%;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  margin: 0;
+  display: flex;
+
+  .input-div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1em;
+
+    .input-component {
+      align-self: center;
+      width: 50%;
+      display: flex;
+    }
+  }
+
+  .messages-div {
+    display: flex;
+    flex-direction: column;
+    min-width: 30%;
+    padding: 1em;
+
+    .message-cards {
+      text-align: center;
+    }
+  }
+}

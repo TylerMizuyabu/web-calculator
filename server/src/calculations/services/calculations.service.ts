@@ -8,4 +8,8 @@ export class CalculationsService {
   addCalculation(c: Calculation) {
     this.previousCalculations = [c, ...this.previousCalculations.slice(0, this.previousCalculations.length - 1)];
   }
+
+  getCalculations(): Calculation[] {
+    return [...this.previousCalculations];
+  }
 }
