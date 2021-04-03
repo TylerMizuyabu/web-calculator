@@ -12,7 +12,7 @@ export class ServerClientService implements OnDestroy {
   private newCalculationSubscription: Subscription;
 
   constructor(private socket: Socket, private appState: AppStateService) {
-    this.newCalculationSubscription = this.socket.fromEvent<Calculation>(MessageTypes.NewCalculation).subscribe((message) => {
+    this.newCalculationSubscription = this.socket?.fromEvent<Calculation>(MessageTypes.NewCalculation)?.subscribe((message) => {
       if (!!message) {
         this.appState.addCalculation(`${message.equation}=${message.result}`);
       }

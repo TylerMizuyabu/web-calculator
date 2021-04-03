@@ -1,25 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Spectator, createComponentFactory } from '@ngneat/spectator';
 
 import { InputComponent } from './input.component';
+import { EvaluatorService } from '../shared/evaluator.service';
+import { AppStateService } from '../../core/app-state/app-state.service';
+import { TokenizerService } from '../shared/tokenizer.service';
+import { MatCardModule } from '@angular/material/card';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 describe('InputComponent', () => {
-  let component: InputComponent;
-  let fixture: ComponentFixture<InputComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ InputComponent ]
-    })
-    .compileComponents();
+  let spectator: Spectator<InputComponent>;
+  const createComponent = createComponentFactory({
+    component: InputComponent,
+    mocks: [TokenizerService, EvaluatorService, AppStateService, MatSnackBar],
+    imports: [MatCardModule],
   });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(InputComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  beforeEach(() => (spectator = createComponent()));
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(spectator.component).toBeTruthy();
   });
 });

@@ -23,8 +23,8 @@ export class InputComponent implements OnInit {
   submit() {
     of(this.tokenizer.tokenize(this.equationControl.value))
       .pipe(
-        map((tokens) => this.evaluator.toShuntingYard(tokens)),
-        map((tokens) => this.evaluator.evaluateShuntingYard(tokens)),
+        map((tokens) => this.evaluator.toRPN(tokens)),
+        map((tokens) => this.evaluator.evaluateRPN(tokens)),
         catchError((err: Error) => {
           this.displayError(err.message);
           return EMPTY;

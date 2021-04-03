@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  calculations: Observable<string[]> = this.appState.getState().pipe(map((s) => s.calculations.filter((str) => !!str && str.length > 0)));
+  calculations: Observable<string[]> = this.appState.getState()?.pipe(map((s) => s.calculations.filter((str) => !!str && str.length > 0)));
   constructor(private serverClient: ServerClientService, private appState: AppStateService) {}
 
   ngOnInit(): void {}

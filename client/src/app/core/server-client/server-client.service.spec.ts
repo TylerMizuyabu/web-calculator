@@ -1,16 +1,15 @@
-import { TestBed } from '@angular/core/testing';
-
+import { createServiceFactory, SpectatorService } from '@ngneat/spectator';
 import { ServerClientService } from './server-client.service';
+import { AppStateService } from '../app-state/app-state.service';
+import { Socket } from 'ngx-socket-io';
 
 describe('ServerClientService', () => {
-  let service: ServerClientService;
+  let spectator: SpectatorService<ServerClientService>;
+  const createService = createServiceFactory({ service: ServerClientService, mocks: [Socket, AppStateService] });
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(ServerClientService);
-  });
+  beforeEach(() => (spectator = createService()));
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    expect(spectator.service).toBeTruthy();
   });
 });

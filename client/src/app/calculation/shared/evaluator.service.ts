@@ -6,7 +6,7 @@ import { missingFunctionRequirements, fnMap } from './functions';
   providedIn: 'root',
 })
 export class EvaluatorService {
-  evaluateShuntingYard(tokens: Token[]): number {
+  evaluateRPN(tokens: Token[]): number {
     let stack: number[] = [];
     for (let token of tokens) {
       if (token.isTokenType(TokenType.Literal)) {
@@ -68,7 +68,7 @@ export class EvaluatorService {
     return stack.pop();
   }
 
-  toShuntingYard(tokens: Token[]): Token[] {
+  toRPN(tokens: Token[]): Token[] {
     const outputQueue: Token[] = [];
     const operatorStack: Token[] = [];
 

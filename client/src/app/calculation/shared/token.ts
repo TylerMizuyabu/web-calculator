@@ -83,4 +83,8 @@ export default class Token {
   getPresedence(): number | undefined {
     return Token.presedence[this.value];
   }
+
+  equals(t: Token): boolean {
+    return this.type === t.getTokenType() && this.value === t.getTokenValue();
+  }
 }
