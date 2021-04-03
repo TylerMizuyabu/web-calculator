@@ -10,4 +10,4 @@ COPY nginx.template.conf /etc/nginx/conf.d/default.conf.template
 RUN rm -rf /usr/share/nginx/html/*
 COPY --from=build-image /ng-app/dist/client /usr/share/nginx/html
 
-CMD CMD /bin/sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
+CMD /bin/sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'

@@ -7,7 +7,7 @@ services:
       context: ./client
     ports:
       - 4200:80
-    env:
+    environment:
       - PORT=80
   server:
     container_name: calculator-server
