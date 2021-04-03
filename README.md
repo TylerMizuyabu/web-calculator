@@ -5,3 +5,5 @@ Performs some basic calculations and functions and saves them in-memory server s
 ## Running It Locally
 
 The fastest way to get this running locally is with docker & docker-compose. To do it this way you must have both of these installed. Then in the root directory of this project just run `docker-compose up` (I would also recommend using the `-d` flag to detach logs from your console). Once this is has finished spinning up the client and athe server you should be able to navigate to http://localhost:4200 to see the app.
+
+You can also find a deployed instance here: https://morning-reef-94143.herokuapp.com/
