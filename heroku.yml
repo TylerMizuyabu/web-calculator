@@ -2,5 +2,3 @@ build:
   docker:
     client: ./client/Dockerfile
     server: ./server/Dockerfile
-run:
-  client: /bin/sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/nginx.conf > /etc/nginx/conf.d/nginx.conf" && nginx -g 'daemon off;'

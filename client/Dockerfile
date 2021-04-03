@@ -6,8 +6,8 @@ COPY . .
 RUN npm run build:prod
 
 FROM nginx:alpine
-COPY nginx.conf /etc/nginx/conf.d/
+COPY nginx.template.conf /etc/nginx/conf.d/
 RUN rm -rf /usr/share/nginx/html/*
 COPY --from=build-image /ng-app/dist/client /usr/share/nginx/html
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD /bin/sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/nginx.conf > /etc/nginx/conf.d/nginx.conf" && nginx -g 'daemon off;'
