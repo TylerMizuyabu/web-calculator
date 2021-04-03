@@ -1,0 +1,22 @@
+<mat-card class="container-card">
+  <h3 class="section-title">Operators</h3>
+  <div class="operators-div">
+    <div class="operator-descriptions" *ngFor="let op of this.getOperatorDescriptions()">
+      <span class="bold">{{ op[0] }}</span> : {{ op[1] }}
+    </div>
+  </div>
+  <hr />
+  <h3 class="section-title">Functions</h3>
+  <div class="functions-div">
+    <div *ngFor="let fn of this.getFunctionsDescriptions()">
+      <span class="bold">{{ fn[0] }}</span> : {{ fn[1] }}
+    </div>
+  </div>
+  <hr />
+  <h3 class="section-title">Dev Notes:</h3>
+  <div class="dev-note">
+    <ul class="notes">
+      <li>Variables do not work at this point in time.</li>
+    </ul>
+  </div>
+</mat-card>

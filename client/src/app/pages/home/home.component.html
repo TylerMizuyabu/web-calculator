@@ -1,6 +1,7 @@
 <div class="container-div">
   <div class="input-div">
     <app-input class="input-component" (evaluation)="this.submitCalculation($event)"></app-input>
+    <app-instruction-card></app-instruction-card>
   </div>
   <div class="messages-div">
     <mat-card class="message-cards" *ngFor="let c of this.calculations | async">{{ c }}</mat-card>

@@ -14,8 +14,6 @@
     padding: 1em;
 
     .input-component {
-      align-self: center;
-      width: 50%;
       display: flex;
     }
   }
@@ -24,10 +22,16 @@
     display: flex;
     flex-direction: column;
     min-width: 30%;
+    max-width: 50%;
     padding: 1em;
 
     .message-cards {
       text-align: center;
+      word-break: break-all;
+      margin-top: 1em;
+      background-color: #8c9eff;
+      color: white;
+      font-size: 1.4em;
     }
   }
 }

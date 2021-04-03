@@ -1,0 +1,29 @@
+.container-card {
+  background-color: #8c9eff;
+  color: white;
+  line-height: 1.5em;
+
+  .operators-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .operator-descriptions {
+      flex-basis: 50%;
+    }
+  }
+
+  .section-title {
+    margin-bottom: 0;
+    font-weight: 600;
+  }
+
+  .notes {
+    margin-top: 0;
+  }
+
+  .bold {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+}

@@ -7,7 +7,7 @@ import Environment from './environment-interface';
 export const environment: Environment = {
   production: false,
   wsServer: {
-    url: 'http://localhost:3000',
+    url: 'https://young-eyrie-76948.herokuapp.com/', //'http://localhost:3000',
     options: {},
   },
 };

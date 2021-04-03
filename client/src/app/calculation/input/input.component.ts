@@ -5,6 +5,8 @@ import { TokenizerService } from '../shared/tokenizer.service';
 import { EvaluatorService } from '../shared/evaluator.service';
 import { of, EMPTY } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { isUndefined } from 'util';
+import { isNull } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-input',
@@ -20,7 +22,8 @@ export class InputComponent implements OnInit {
     this.equationControl = new FormControl('', []);
   }
 
-  submit() {
+  submit(event: Event) {
+    event.preventDefault();
     of(this.tokenizer.tokenize(this.equationControl.value))
       .pipe(
         map((tokens) => this.evaluator.toRPN(tokens)),
@@ -31,8 +34,11 @@ export class InputComponent implements OnInit {
         })
       )
       .subscribe((result) => {
-        result = result || 0;
-        this.evaluation.emit([this.equationControl.value, result]);
+        if (isUndefined(result)) {
+          this.displayError('Unable to evaluate expression');
+        } else {
+          this.evaluation.emit([this.equationControl.value, result]);
+        }
       });
   }
 

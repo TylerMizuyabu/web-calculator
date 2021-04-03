@@ -9,11 +9,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { TokenizerService } from './shared/tokenizer.service';
 import { EvaluatorService } from './shared/evaluator.service';
+import { InstructionCardComponent } from './instruction-card/instruction-card.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
-  declarations: [InputComponent],
-  imports: [CommonModule, MatFormFieldModule, MatInputModule, MatSnackBarModule, MatButtonModule, ReactiveFormsModule, BrowserModule],
+  declarations: [InputComponent, InstructionCardComponent],
+  imports: [CommonModule, MatFormFieldModule, MatCardModule, MatInputModule, MatSnackBarModule, MatButtonModule, ReactiveFormsModule, BrowserModule],
   providers: [TokenizerService, EvaluatorService],
-  exports: [InputComponent],
+  exports: [InputComponent, InstructionCardComponent],
 })
 export class CalculationModule {}
