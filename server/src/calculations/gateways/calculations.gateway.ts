@@ -9,6 +9,8 @@ import { Calculation } from '../models/calculation';
 import { Socket, Server } from 'socket.io';
 import { CalculationsService } from '../services/calculations.service';
 import { MessageTypes } from '../models/message-types';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @WebSocketGateway()
 export class CalculationsGateway implements OnGatewayConnection {
@@ -25,9 +27,7 @@ export class CalculationsGateway implements OnGatewayConnection {
   }
 
   @SubscribeMessage(MessageTypes.SubmitCalculation)
-  handleCalculation(@MessageBody() data: Calculation) {
-    this.calcService.addCalculation(data);
-    this.server.emit(MessageTypes.NewCalculation, data);
-    return data;
+  handleCalculation(@MessageBody() data: Calculation): Observable<Calculation> {
+    return this.calcService.addCalculation(data).pipe(tap((c) => this.server.emit(MessageTypes.NewCalculation, c)));
   }
 }
