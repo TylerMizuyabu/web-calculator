@@ -17,9 +17,12 @@ const ormConfig: TypeOrmModuleOptions = {
     migrationsDir: 'src/migrations',
   },
   synchronize: false,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  ssl:
+    !process.env.LOCAL_RUN || process.env.LOCAL_RUN === 'false'
+      ? {
+          rejectUnauthorized: false,
+        }
+      : false,
 };
 
 export = ormConfig;

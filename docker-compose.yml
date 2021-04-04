@@ -16,3 +16,7 @@ services:
       context: ./server
     ports:
       - 3000:3000
+    environment:
+      - DATABASE_URL="postgres://postgres:postgres@postgres:5432/dev"
+      - MAX_STORED_CALCULATIONS=10
+      - LOCAL_RUN=true
