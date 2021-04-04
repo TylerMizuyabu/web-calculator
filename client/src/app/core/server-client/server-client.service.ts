@@ -28,6 +28,6 @@ export class ServerClientService implements OnDestroy {
       equation,
       result: `${result}`,
     };
-    console.log(this.socket.emit(MessageTypes.SubmitCalculation, c));
+    this.socket.emit(MessageTypes.SubmitCalculation, c);
   }
 }
